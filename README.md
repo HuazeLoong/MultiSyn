@@ -15,4 +15,5 @@ Ensure that the dataset is prepared and preprocessed as needed.
 Pytorch XXX
 Python XXX
 
+When running for the first time, please run the data_drug.py file to create data.
 Use train.py to train the model.
