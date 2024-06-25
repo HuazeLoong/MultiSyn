@@ -4,7 +4,8 @@ import csv
 import torch
 import numpy as np
 import pandas as pd
-from TEST.dataset_drug import *
+from const import *
+from dataset_drug import *
 from itertools import islice
 from rdkit import Chem
 from rdkit import RDConfig
@@ -246,19 +247,15 @@ def creat_data(datafile,cellfile,smilefile):
         g = Mol2HeteroGraph(mol)
         smile_pharm_graph[smile] = g
 
-    data_file = os.path.join(directory, 'TEST', 'data', datafile)
+    data_file = os.path.join(DATA_DIR, datafile)
     df = pd.read_csv(data_file + '.csv')
     drug1, drug2, cell, label = list(df['drug1']), list(df['drug2']), list(df['cell']), list(df['label'])
     drug1, drug2, cell, label = np.asarray(drug1), np.asarray(drug2), np.asarray(cell), np.asarray(label)
 
-    MyTestDataset(root='TEST\data', dataset=datafile + '_drug1', xd=drug1, xt=cell, xt_featrue=cell_features, y=label,smile_graph=smile_pharm_graph)
-    MyTestDataset(root='TEST\data', dataset=datafile + '_drug2', xd=drug2, xt=cell, xt_featrue=cell_features, y=label,smile_graph=smile_pharm_graph)
+    MyTestDataset(root=DATA_DIR, dataset=datafile + '_drug1', xd=drug1, xt=cell, xt_featrue=cell_features, y=label,smile_graph=smile_pharm_graph)
+    MyTestDataset(root=DATA_DIR, dataset=datafile + '_drug2', xd=drug2, xt=cell, xt_featrue=cell_features, y=label,smile_graph=smile_pharm_graph)
 
 if __name__ == "__main__":
-    directory = os.getcwd()
     datafile_1 = ['new_labels_0_10']
-    cell_file = os.path.join(directory, 'TEST', 'data', 'cell_features.csv')
-    smile_file = os.path.join(directory, 'TEST', 'data', 'smiles.csv')
     for datafile in datafile_1:
-        creat_data(datafile, cell_file,smile_file)
-    
+        creat_data(datafile, CELL_DIR, SMILES_DIR)
