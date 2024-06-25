@@ -5,13 +5,12 @@ import numpy as np
 import torch.nn as nn
 import torch.nn.functional as F
 from utils import *
+from const import *
 from random import shuffle
 from model import *
-from torch.optim import SGD
 from sklearn import metrics
 from dataset_drug import MyTestDataset
 from torch_geometric.loader import DataLoader 
-from torch.optim.lr_scheduler import ReduceLROnPlateau
 from sklearn.metrics import confusion_matrix,f1_score,recall_score, balanced_accuracy_score
 from sklearn.metrics import cohen_kappa_score, accuracy_score, roc_auc_score, precision_score
 
@@ -120,7 +119,6 @@ NUM_EPOCHS = 1500
 print('Learning rate: ', LR)
 print('Epochs: ', NUM_EPOCHS)
 datafile = 'new_labels_0_10'
-cellfile = 'data/new_cell_features_954.csv'
 
 if torch.cuda.is_available():
     device = torch.device('cuda:0')
@@ -129,8 +127,8 @@ else:
     device = torch.device('CPU')
     print('The code uses CPU!!!')
 
-drug1_data = MyTestDataset(root='TEST\data', dataset=datafile + '_drug1')
-drug2_data = MyTestDataset(root='TEST\data', dataset=datafile + '_drug2')
+drug1_data = MyTestDataset(root=DATA_DIR, dataset=datafile + '_drug1')
+drug2_data = MyTestDataset(root=DATA_DIR, dataset=datafile + '_drug2')
 lenth = len(drug1_data)
 pot = int(lenth/5)
 print('lenth', lenth)
@@ -156,12 +154,12 @@ for i in range(5):
     optimizer = torch.optim.Adam(model.parameters(), lr=LR)
     # scheduler = ReduceLROnPlateau(optimizer, mode='min', factor=0.1, patience=5)
 
-    os.makedirs('TEST/data/result', exist_ok=True)
-    os.makedirs('TEST/data/result/results', exist_ok=True)
-    os.makedirs('TEST/data/result/loss', exist_ok=True)
-    file_AUCs_train = 'TEST/data/result/results/train' + str(i) + '.csv'
-    file_AUCs_test = 'TEST/data/result/results/test' + str(i) + '.csv'
-    loss_file = 'TEST/data/result/loss/loss' + str(i)  + '.csv'
+    os.makedirs(RESULT_DIR, exist_ok=True)
+    os.makedirs(RESULTS_DIR, exist_ok=True)
+    os.makedirs(LOSS_DIR, exist_ok=True)
+    file_AUCs_train = FILE_AUCS_TRAIN + str(i) + '.csv'
+    file_AUCs_test = FILE_AUCS_TEST + str(i) + '.csv'
+    loss_file = LOSSES_DIR + str(i)  + '.csv'
     AUCs = ('Epoch,AUC_dev,PR_AUC,ACC,BACC,PREC,TPR,KAPPA,RECALL,F1')
     for file_AUCs in [file_AUCs_train, file_AUCs_test]:
         with open(file_AUCs, 'w') as f:
