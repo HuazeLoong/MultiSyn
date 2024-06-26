@@ -3,9 +3,9 @@ from model_drug import *
 class TestSyn(nn.Module):
     def __init__(self, n_output=2, num_features_xt=954, dropout=0.2, output_dim=128):
         super(TestSyn, self).__init__()
-        hid_dim = 504  
+        hid_dim = 300  
         self.act = get_func("ReLU")  
-        self.depth = 8  
+        self.depth = 3  
 
         self.w_atom = nn.Linear(42, hid_dim)
         self.w_bond = nn.Linear(14, hid_dim)
@@ -37,19 +37,16 @@ class TestSyn(nn.Module):
 
         # combined layers
         self.pred = torch.nn.Sequential(
-            torch.nn.Linear(hid_dim * 8 + output_dim, 4096),  
-            BatchNorm1d(4096),
-            torch.nn.ReLU(),
-             torch.nn.Linear(4096, 2048), 
-            BatchNorm1d(2048),
-            torch.nn.ReLU(),
-            torch.nn.Linear(2048, 1024), 
+            torch.nn.Linear(hid_dim * 8 + output_dim, 1024),  
             BatchNorm1d(1024),
             torch.nn.ReLU(),
             torch.nn.Linear(1024, 512), 
             BatchNorm1d(512),
             torch.nn.ReLU(),
-            torch.nn.Linear(512, 128), 
+            torch.nn.Linear(512, 256), 
+            BatchNorm1d(256),
+            torch.nn.ReLU(),
+            torch.nn.Linear(256, 128), 
             BatchNorm1d(128),
             torch.nn.ReLU(),
             torch.nn.Linear(128, n_output), 
