@@ -236,9 +236,12 @@ def creat_data(datafile,cellfile,smilefile):
             cell_features.append(row)
     cell_features = np.array(cell_features)
 
+    data_file = os.path.join(DATA_DIR, datafile)
+    df = pd.read_csv(data_file + '.csv')
+
     compound_iso_smiles = []
-    df = pd.read_csv(smilefile)
-    compound_iso_smiles += list(df['smile'])
+    compound_iso_smiles += list(df['drug1'])
+    compound_iso_smiles += list(df['drug2'])
     compound_iso_smiles = set(compound_iso_smiles)
     
     smile_pharm_graph = {}
@@ -246,9 +249,7 @@ def creat_data(datafile,cellfile,smilefile):
         mol = Chem.MolFromSmiles(smile)
         g = Mol2HeteroGraph(mol)
         smile_pharm_graph[smile] = g
-
-    data_file = os.path.join(DATA_DIR, datafile)
-    df = pd.read_csv(data_file + '.csv')
+        
     drug1, drug2, cell, label = list(df['drug1']), list(df['drug2']), list(df['cell']), list(df['label'])
     drug1, drug2, cell, label = np.asarray(drug1), np.asarray(drug2), np.asarray(cell), np.asarray(label)
 
