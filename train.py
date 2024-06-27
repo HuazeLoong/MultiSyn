@@ -112,13 +112,13 @@ modeling = TestSyn
 
 TRAIN_BATCH_SIZE = 128
 TEST_BATCH_SIZE = 128
-LR = 0.0005
+LR = 0.0001
 LOG_INTERVAL = 20
 NUM_EPOCHS = 1500
 
 print('Learning rate: ', LR)
 print('Epochs: ', NUM_EPOCHS)
-datafile = 'new_labels_0_10'
+datafile = 'drug_com'
 
 if torch.cuda.is_available():
     device = torch.device('cuda:0')
