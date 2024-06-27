@@ -228,7 +228,7 @@ def get_cell_feature(cellId, cell_features):
         if row[0] == cellId:
             return row[1: ]
 
-def creat_data(datafile,cellfile,smilefile):
+def creat_data(datafile,cellfile):
     cell_features = []
     with open(cellfile) as file:
         csv_reader = csv.reader(file)  
@@ -238,25 +238,28 @@ def creat_data(datafile,cellfile,smilefile):
 
     data_file = os.path.join(DATA_DIR, datafile)
     df = pd.read_csv(data_file + '.csv')
+    df_id = pd.read_csv(DRUGID_DIR)
 
     compound_iso_smiles = []
-    compound_iso_smiles += list(df['drug1'])
-    compound_iso_smiles += list(df['drug2'])
+    compound_iso_smiles += list(df['drug1_smiles'])
+    compound_iso_smiles += list(df['drug2_smiles'])
     compound_iso_smiles = set(compound_iso_smiles)
     
     smile_pharm_graph = {}
     for smile in compound_iso_smiles:
         mol = Chem.MolFromSmiles(smile)
         g = Mol2HeteroGraph(mol)
-        smile_pharm_graph[smile] = g
+        for index, row in df_id.iterrows():
+            if row['smiles'] == smile:
+                smile_pharm_graph[row['drug']] = g
         
-    drug1, drug2, cell, label = list(df['drug1']), list(df['drug2']), list(df['cell']), list(df['label'])
+    drug1, drug2, cell, label = list(df['drug1_name']), list(df['drug2_name']), list(df['cell']), list(df['label'])
     drug1, drug2, cell, label = np.asarray(drug1), np.asarray(drug2), np.asarray(cell), np.asarray(label)
 
     MyTestDataset(root=DATA_DIR, dataset=datafile + '_drug1', xd=drug1, xt=cell, xt_featrue=cell_features, y=label,smile_graph=smile_pharm_graph)
     MyTestDataset(root=DATA_DIR, dataset=datafile + '_drug2', xd=drug2, xt=cell, xt_featrue=cell_features, y=label,smile_graph=smile_pharm_graph)
 
 if __name__ == "__main__":
-    datafile_1 = ['new_labels_0_10']
+    datafile_1 = ['drug_com']
     for datafile in datafile_1:
-        creat_data(datafile, CELL_DIR, SMILES_DIR)
+        creat_data(datafile, CELL_DIR)
