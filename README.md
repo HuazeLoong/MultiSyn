@@ -1,6 +1,7 @@
 # Multisyn: A Multi-Source information Integration Approach for Synergistic Drug Combination Prediction
 
 This repository contains the our implementation of the paper aboved.
+![Multisyn Architecture](Multisyn.png)
 
 # 1. Introduction
 
