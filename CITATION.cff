@@ -1,0 +1,41 @@
+cff-version: 1.2.0
+message: "If you use this codebase, please cite our paper."
+title: "Multisyn: Accurate Prediction of Synergistic Drug Combination Using a Multi-Source Information Fusion Framework"
+version: 0.1.0
+date-released: 2025-04-11
+repository-code: https://github.com/HuazeLoong/MultiSyn
+authors:
+  - family-names: Jin
+    given-names: Shuting
+    affiliation: Wuhan University of Science and Technology, China
+    email: shutingjin@wust.edu.cn
+
+  - family-names: Long
+    given-names: Huaze
+    affiliation: Wuhan University of Science and Technology, China
+    email: loong@wust.edu.cn
+
+  - family-names: Huang
+    given-names: Anqi
+    affiliation: Wuhan University of Science and Technology, China
+    email: aqanqi2024@163.com
+
+  - family-names: Wang
+    given-names: Jianming
+    affiliation: Yonsei University, Republic of Korea
+    email: jmwang113@hotmail.com
+
+  - family-names: Yu
+    given-names: Xuan
+    affiliation: Henan Provincial People's Hospital & the People's Hospital of Zhengzhou University, China
+    email: yuxuan@zzu.edu.cn
+
+  - family-names: Xu
+    given-names: Zhiwei
+    affiliation: Wuhan University of Science and Technology, China
+    email: xuzhiwei@wust.edu.cn
+
+  - family-names: Xu
+    given-names: Junlin
+    affiliation: Wuhan University of Science and Technology, China
+    email: xjl@wust.edu.cn

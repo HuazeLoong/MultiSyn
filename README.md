@@ -1,25 +1,26 @@
-# Multisyn: A Multi-Source information Integration Approach for Synergistic Drug Combination Prediction
+# Multisyn: Accurate prediction of synergistic drug combination using a multi-source information fusion framework
 
-This repository contains the our implementation of the paper aboved.
+This repository contains the official implementation of our paper:  
+**Multisyn** integrates pharmacophore structure, protein-protein interaction (PPI) networks, and cell line omics to predict synergistic anti-cancer drug combinations.
+
 ![Multisyn Architecture](Multisyn.png)
 
-# 1. Introduction
+## 1. Introduction
 
-Our method, Multisyn, integrates pharmacophore information, PPI networks, and genomic data to predict synergistic anti-cancer drug combinations.
+Multisyn represents molecules as heterogeneous molecular graphs and predicts drug combination synergy using graph neural networks.  
+It provides substructure-level attention and integrates multi-source data, including PPI and cell lines omics profiles.
 
-**Paper Link**:
-
-<!-- Author Name et al., "Multisyn: Leveraging Graph Neural Networks for Synergistic Drug Combination Prediction", Journal Name, Year. -->
+**Paper Link**: *Coming soon...*
 
 ## 1.1 Features
 
-- Represents molecules using heterogeneous molecular graphs.
-- Predicts synergistic drug combinations using attributed graph neural networks.
-- Integrates multiple cell line data sources: genomics and protein-protein interaction (PPI) networks.
-- Provides interpretable results with an attention mechanism for substructure identification.
+- Drug heterogeneous molecular graph construction based on BRICS fragments  
+-  Dual-view cell line integration: expression + PPI fusion features  
+- Multi-modal attention-based GNN architecture  
 
 ## 1.2 File Structure
 
+```text
 multisyn/             ← Project root directory
 ├── setup.py          ← Packaging and installation configuration
 ├── requirements.txt  ← Dependency management
@@ -31,46 +32,51 @@ multisyn/             ← Project root directory
     ├── utils.py
     ├── dataset.py
     ├── const.py
-    ├── prepare_data.py
-
-## 1.3 Citation
-
-If you find this repository helpful, please cite our work:
-
-# 2. Item
-## 2.1 Requirements
-
-Our operating environment is as follows：
-- Python 3.11.5
-- Pytorch 2.1.0
-- numpy 1.24.3
-- Pytorch Geometric 2.4.0
-
-## 2.2 File Description
-
-This project contains six files for preprocessing, training, and evaluating drug combination prediction models.
-
-The project is mainly divided into data processing, model definition, training, and evaluation.
-
-- const.py: The const.py file defines variables for common file paths.    
-- data_drug.py:process drug data, construct molecular graphs, and create datasets.  
-- dataset_drug.py:process drug-target data and convert it into PyTorch Geometric format.   
-- model_drug.py: Defines the model for drug molecular feature.   
-- model.py:predict drug combination.  
-- train.py: Main program for training the prediction model.    
-- utils.py: loss functions, evaluation metrics, etc.  
-
-
-## 2.3 Run
-Preprocess the data by running:
-
-When running for the first time, please run the file to create data. 
-
-```bash
-python data_drug.py
+    └── prepare_data.py
 ```
 
-Train the model：
- ```bash
- python train.py
- ```
+## 1.3 Citation
+If you find this repository helpful, please cite our work:
+
+```bibtex
+
+```
+
+# 2. Usage
+## 2.1 Requirements
+
+Recommended Python environment:
+
+```bash
+Python ≥ 3.8
+PyTorch ≥ 2.0
+PyTorch Geometric ≥ 2.0
+DGL ≥ 1.1
+RDKit ≥ 2022.9.5
+scikit-learn
+pandas
+numpy
+scipy
+
+```
+
+Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+## 2.2 Preprocessing
+To preprocess the drug combination dataset:
+
+```bash
+python prepare_data.py
+```
+
+Processed files will be saved to `multisyn\datas\processed`.
+
+## 2.3 Train the Model
+To train the Multisyn model:
+```bash
+python train.py
+```
+Results will be saved to the `multisyn\datas\results` directory.
