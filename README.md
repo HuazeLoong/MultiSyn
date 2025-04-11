@@ -27,14 +27,15 @@ multisyn/             ← Project root directory
 ├── setup.py          ← Packaging and installation configuration
 ├── requirements.txt  ← Dependency management
 ├── README.md         ← Project description
-└── multisyn/         ← Python package directory (all core `.py` files are placed here)
-    ├── __init__.py
-    ├── model.py
-    ├── train.py
-    ├── utils.py
-    ├── dataset.py
-    ├── const.py
-    └── prepare_data.py
+└── src/
+    └── multisyn/         ← Python package (contains all core source code)
+        ├── __init__.py
+        ├── model.py
+        ├── train.py
+        ├── utils.py
+        ├── dataset.py
+        ├── const.py
+        └── prepare_data.py
 ```
 
 ## 1.3 Citation
@@ -46,25 +47,53 @@ If you find this repository helpful, please cite our work:
 
 # 2. Usage
 ## 2.1 Requirements
-
-Recommended Python environment:
-
+We recommend the following Python environment:
 ```bash
-Python ≥ 3.8
-PyTorch ≥ 2.0
-PyTorch Geometric ≥ 2.0
-DGL ≥ 1.1
-RDKit ≥ 2022.9.5
-scikit-learn
-pandas
-numpy
-scipy
+# ---- Core Deep Learning Framework ----
+torch==2.1.0
+torchvision==0.16.0
+torchaudio==2.1.0
 
+# ⚠ torch-scatter must match your PyTorch and CUDA version.
+# Manual installation is recommended (see notes below).
+
+# ---- GNN Packages ----
+torch-geometric==2.4.0
+dgl==1.1.2  # or dgl==1.1.2+cu118 depending on your CUDA version
+
+# ---- Chemistry Toolkit ----
+rdkit==2022.9.5  # from conda or RDKit wheels
+
+# ---- ML + Data Processing ----
+scikit-learn>=1.2.0
+numpy>=1.24.0
+pandas>=1.3.0
+scipy>=1.7.0
+
+# ---- Optional Utilities ----
+tqdm
+matplotlib
 ```
 
-Install dependencies:
+Install core dependencies using:
+
 ```bash
 pip install -r requirements.txt
+```
+
+Notes on Specific Dependencies
+
+⚠ torch-scatter
+torch-scatter requires a PyTorch- and CUDA-matching build. Use the following command to install a compatible version:
+```bash
+pip install torch-scatter -f https://data.pyg.org/whl/torch-2.1.0+cu118.html
+```
+You can find more options at: [PyG Installation Guide](https://pytorch-geometric.readthedocs.io/en/latest/notes/installation.html)
+
+⚠ rdkit
+rdkit is not available on PyPI; it is recommended to install via conda:
+```bash
+conda install -c rdkit rdkit==2022.9.5
 ```
 
 ## 2.2 Preprocessing

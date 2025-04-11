@@ -1,9 +1,13 @@
 # Ignore Python compiled files
 __pycache__/
+multisyn.egg-info
 *.py[cod]
 *.so
+*.pyc
+src/multisyn/__pycache__/
 
 # Ignore training result folder
+datas/results/
 results/
 
 *.log

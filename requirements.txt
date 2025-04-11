@@ -1,11 +1,22 @@
+# ---- Core Deep Learning Framework ----
 torch==2.1.0
-torch-scatter==2.1.2
-torch-sparse==0.6.18
-torch_geometric==2.4.0
-dgl==1.1.2
-dgllife==0.3.2
-numpy
-pandas==2.1.1
-rdkit==2022.9.5
-scikit-learn
+torchvision==0.16.0
+torchaudio==2.1.0
+# ⚠ torch-scatter 必须与 PyTorch 版本匹配，请根据 https://pytorch-geometric.readthedocs.io/en/latest/notes/installation.html 安装
+
+# ---- Graph Learning Packages ----
+torch-geometric==2.4.0
+# DGL 建议使用官网指令安装，如 CUDA 11.8: pip install dgl-cu118 -f https://data.dgl.ai/wheels/repo.html
+
+# ---- Chemistry Toolkit ----
+rdkit==2022.9.5  # 推荐使用 conda 安装：conda install -c rdkit rdkit
+
+# ---- Machine Learning & Data ----
+numpy==1.24.3
+pandas==2.0.3
+scikit-learn==1.3.0
 scipy==1.11.3
+
+# ---- Optional Utilities ----
+tqdm
+matplotlib
