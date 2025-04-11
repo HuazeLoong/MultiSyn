@@ -1,0 +1,12 @@
+# Ignore Python compiled files
+__pycache__/
+*.py[cod]
+*.so
+
+# Ignore training result folder
+results/
+
+*.log
+*.ckpt
+*.pt
+*.pth

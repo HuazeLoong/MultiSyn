@@ -18,7 +18,20 @@ Our method, Multisyn, integrates pharmacophore information, PPI networks, and ge
 - Integrates multiple cell line data sources: genomics and protein-protein interaction (PPI) networks.
 - Provides interpretable results with an attention mechanism for substructure identification.
 
-## 1.2 Results
+## 1.2 File Structure
+
+multisyn/             ← Project root directory
+├── setup.py          ← Packaging and installation configuration
+├── requirements.txt  ← Dependency management
+├── README.md         ← Project description
+└── multisyn/         ← Python package directory (all core `.py` files are placed here)
+    ├── __init__.py
+    ├── model.py
+    ├── train.py
+    ├── utils.py
+    ├── dataset.py
+    ├── const.py
+    ├── prepare_data.py
 
 ## 1.3 Citation
 

@@ -1,0 +1,11 @@
+torch==2.1.0
+torch-scatter==2.1.2
+torch-sparse==0.6.18
+torch_geometric==2.4.0
+dgl==1.1.2
+dgllife==0.3.2
+numpy
+pandas==2.1.1
+rdkit==2022.9.5
+scikit-learn
+scipy==1.11.3
