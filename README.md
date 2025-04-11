@@ -81,7 +81,7 @@ Install core dependencies using:
 pip install -r requirements.txt
 ```
 
-Notes on Specific Dependencies
+**Notes on Specific Dependencies**
 
 ⚠ torch-scatter
 torch-scatter requires a PyTorch- and CUDA-matching build. Use the following command to install a compatible version:
