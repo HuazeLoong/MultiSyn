@@ -1,5 +1,7 @@
 # Multisyn: Accurate prediction of synergistic drug combination using a multi-source information fusion framework
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15194129.svg)](https://doi.org/10.5281/zenodo.15194129)
+
 This repository contains the official implementation of our paper:  
 **Multisyn** integrates pharmacophore structure, protein-protein interaction (PPI) networks, and cell line omics to predict synergistic anti-cancer drug combinations.
 

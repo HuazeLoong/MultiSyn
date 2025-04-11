@@ -2,6 +2,8 @@ cff-version: 1.2.0
 message: "If you use this codebase, please cite our paper."
 title: "Multisyn: Accurate Prediction of Synergistic Drug Combination Using a Multi-Source Information Fusion Framework"
 version: 0.1.0
+doi: 10.5281/zenodo.15194129
+license: MIT
 date-released: 2025-04-11
 repository-code: https://github.com/HuazeLoong/MultiSyn
 authors:
