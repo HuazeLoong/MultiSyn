@@ -1,4 +1,4 @@
-# PRODeepSyn: Integrating Protein-Protein Interaction Network with Omics Data to Predict Anticancer Synergistic Drug Combinations
+# Integrating Protein-Protein Interaction Network with Omics Data to Predict Anticancer Synergistic Drug Combinations
 
 This project provides a lightweight implementation of the **PRODeepSyn** model to embed cell lines using protein–protein interaction (PPI) networks and omics targets (e.g., gene expression and mutation). It enables generation of cell line representations for downstream drug synergy prediction tasks.
 
