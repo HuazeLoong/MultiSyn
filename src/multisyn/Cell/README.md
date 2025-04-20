@@ -17,12 +17,17 @@ This project provides a lightweight implementation of the **PRODeepSyn** model t
 
 ---
 # Run Instructions
-## Step 1: 
+## Step 1:
+Unzip the data compression package `data.zip` to the project's `data/` directory:
+```bash
+unzip data.zip -d ./data
+```
+## Step 2: 
 ```python
 python train.py
 ```
 Train cell embeddings (both GE and MUT by default)
-## Step 2: 
+## Step 3: 
 ```python
 python gen_feat.py mdl_ge_128x384_sample mdl_mut_128x384_sample
 ```
